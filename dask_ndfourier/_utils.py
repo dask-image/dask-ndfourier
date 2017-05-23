@@ -42,7 +42,7 @@ def _get_freq_grid(shape, chunks, dtype=float):
         freq_grid_i = _compat._fftfreq(shape[i],
                                        chunks=chunks[i]).astype(dtype)[sl]
         for j in itertools.chain(range(i), range(i + 1, ndim)):
-            freq_grid_i = freq_grid_i.repeat(shape[j], axis=j)
+            freq_grid_i = freq_grid_i.repeat(int(shape[j]), axis=j)
 
         freq_grid.append(freq_grid_i)
 
